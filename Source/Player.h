@@ -17,4 +17,10 @@ private:
 	float JumpHeight;
 	float JumpV0;
 	float moveSpeed;
+	int frame = 1;  // 左中右 = 0,1,2 に応じて
+	int srcX = frame * 64;
+	int srcY = 64;  // ← 左向きの段（2段目）
+
+	bool isGameOver = false;
+
 };

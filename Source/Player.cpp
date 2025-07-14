@@ -3,6 +3,7 @@
 #include "Stage.h"
 #include "../ImGui/imgui.h"
 #include "CsvReader.h"
+#include "../Library/SceneManager.h"
 
 //static const float Gravity = 0.05f;
 //static const float JumpHeight = 64.0f * 2.0f;
@@ -30,13 +31,14 @@ Player::Player(VECTOR2 pos)
 	}
 	JumpV0 = -sqrtf(2.0f * Gravity * JumpHeight);
 
-	hImage = LoadGraph("data/image/tamadot.png");
+	hImage = LoadGraph("data/image/images.png");
 	assert(hImage > 0);
 
 	imageSize = VECTOR2(64, 64);
 	anim = 0;
-	animY = 3;
+	animY = 0;
 
+	
 	position = pos;
 	velocityY = 0.0f;
 }
@@ -109,13 +111,18 @@ void Player::Update()
 		float drawX = position.x - st->ScrollX(); // これが表示座標
 		static const int RightLimit = 400;
 		static const int LeftLimit = 24;
-		if (drawX > RightLimit) {
-			st->SetScrollX(position.x - RightLimit);
-		}
-		else if (drawX < LeftLimit) {
-			position.x = LeftLimit + st->ScrollX();
-		}
+		// 例：毎フレーム一定量スクロール
+		st->SetScrollX(st->ScrollX() + 3.9f);  // スクロール速度 = 2ピクセル/frame
+
 	}
+
+	if (position.x + imageSize.x / 2 < st->ScrollX()) {
+		isGameOver = true;
+		SceneManager::ChangeScene("GAMEOVER");
+	}
+
+
+
 	ImGui::Begin("Player");
 	ImGui::Checkbox("onGround", &onGround);
 	ImGui::InputFloat("positionY", &position.y);

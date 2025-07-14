@@ -2,6 +2,9 @@
 #include "SceneBase.h"
 #include "../Source/SceneFactory.h"
 #include <DxLib.h>
+#include "../Library/SceneManager.h"
+#include "ObjectManager.h"
+
 
 namespace
 {

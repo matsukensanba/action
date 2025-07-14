@@ -1,5 +1,7 @@
 #include "TitleScene.h"
 #include <DxLib.h>
+#include "../Library/SceneManager.h"
+
 
 TitleScene::TitleScene()
 {

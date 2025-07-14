@@ -4,10 +4,13 @@
 #include "Time.h"
 #include <DxLib.h>
 
+
+
 void AppInit()
 {
 	ObjectManager::Init();
 	SceneManager::Init();
+
 	Time::Init();
 }
 

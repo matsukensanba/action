@@ -1,6 +1,8 @@
 #include "PlayScene.h"
 #include <DxLib.h>
 #include "Stage.h"
+#include "../Library/SceneManager.h"
+
 
 PlayScene::PlayScene()
 {

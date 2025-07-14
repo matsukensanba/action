@@ -3,6 +3,9 @@
 #include <vector>
 #include "Player.h"
 #include "CsvReader.h"
+#include "DxLib.h"
+#include "Screen.h"
+
 
 //std::vector<std::vector<int>> map = {
 //	{ 10,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -45,7 +48,7 @@ Stage::Stage()
 			}
 		}
 	}
-	hBackground = LoadGraph("D:\GE2A 29\PG\Platform\project\data\image\haikei.png");
+	hBackground = LoadGraph("data/image/haikei.png");
 }
 
 Stage::~Stage()
@@ -54,6 +57,10 @@ Stage::~Stage()
 
 void Stage::Draw()
 {
+	if (hBackground > 0) {
+		DrawExtendGraph(0, 0, Screen::WIDTH, Screen::HEIGHT, hBackground, TRUE);
+	}
+
 	int w = imageSize.x;
 	int h = imageSize.y;
 
